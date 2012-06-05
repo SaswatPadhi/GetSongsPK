@@ -61,9 +61,9 @@ function getSongsList ($movie)
         while(isset($songmatch[1][++$sindex])) {
             if(strcasecmp(substr($songmatch[2][$sindex], -4), "kbps") == 0)
                 continue;
-            $sres[$songmatch[2][$sindex]] = $songmatch[1][$sindex];
+            $sres[html_entity_decode(urldecode($songmatch[2][$sindex]))] = $songmatch[1][$sindex];
         }
-        $res[$movie.$match[2][$index]] = $sres;
+        $res[html_entity_decode(urldecode($movie.$match[2][$index]))] = $sres;
     }
     curl_close($curl);
 
